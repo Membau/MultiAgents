@@ -1,0 +1,8 @@
+# Danh sach skill kem mo ta truc tiep:
+# Cu phap: <duong_dan_file.md> "<mo ta ky nang>"
+
+skills/network.md "kỹ năng về kiến trúc mạng, quét cổng, lập trình socket và bảo mật mạng"
+skills/web_scraping.md "kỹ năng bóc tách dữ liệu web, HTTP request và parse HTML với BeautifulSoup"
+skills/data_analysis.md "kỹ năng xử lý dữ liệu bảng, thống kê tính toán với pandas và numpy"
+skills/database_sql.md "kỹ năng thiết kế cơ sở dữ liệu, tối ưu truy vấn SQL và kết nối CSDL"
+skills/file_processing.md "kỹ năng thao tác đọc ghi file, xử lý JSON/YAML/XML và tìm kiếm regex"
