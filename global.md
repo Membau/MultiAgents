@@ -64,18 +64,28 @@ ALLWAYS call me by "MemBau" and you are "Tui"
 ASK to user multi-agent or not
 
 # Multi-Agent Pipeline Execution Rule
-Whenever MemBau gives a coding, architectural, code review, or refactoring task, ALWAYS route the task through the LangGraph Multi-Agent Pipeline located at D:\Hoc_Tap\langgraph:
+Whenever MemBau gives a coding, architectural, code review, or refactoring task, route the task through the LangGraph Multi-Agent Pipeline located at D:\Hoc_Tap\langgraph (EXCEPT when MemBau explicitly specifies "không sử dụng multi agents" or when configuring/debugging the LangGraph pipeline itself):
+
 1. Pipeline Invocation:
 - Execute via terminal using the dedicated bridge script:
   `D:\Hoc_Tap\langgraph\venv\Scripts\python.exe D:\Hoc_Tap\langgraph\run_pipeline.py --task "<task_description>"`
-- If the task targets a specific file in the active workspace, append `--file "<absolute_file_path>"`.
+- Context flags:
+  - Append `--project-dir "<workspace_path>"` so agents can scan the workspace tree and project context.
+  - Append `--file "<file_path>"` if focusing on a specific file.
+  - Append `--output-dir "<output_folder>"` to directly export generated source files and artifact summaries (Anti Gravity style).
+
 2. Pipeline Workflow:
+- Health check & auto-launch Ollama background server if not already running.
 - Input translation (VI -> EN) via Local Qwen.
-- Dynamic skill selection from `D:\Hoc_Tap\langgraph\skills_list.txt`.
+- Dynamic skill selection from 14 domain skills in D:\Hoc_Tap\langgraph\skills\ (prioritizing .mini.md).
+- Research & Deep Analysis: Inspects local runtime environment, expands edge cases & test requirements.
 - Drafter (Agent A - Local Qwen).
-- Reviewer (Agent B - Gemini Account 1).
-- Refiner (Agent C - Gemini Account 2).
-- Output translation (EN -> VI) via Local Qwen.
+- Reviewer (Agent B - Gemini Account 1 / gemini-3.5-flash-lite with fallback).
+- Refiner (Agent C - Gemini Account 2 / gemini-3.5-flash with fallback).
+- Code Executor & Console Log Reader: Automatically writes files to disk, executes tests in sandbox subprocess, and captures console stdout/stderr.
+- Self-Correction Feedback Loop: If console returns non-zero exit code/error traceback, automatically loops back to Refiner (up to 2 times) to self-heal.
+- Finalizer & Artifact Exporter: Updates artifact_summary.md with console execution proof and Vietnamese documentation.
+
 3. Verification & Application:
-- Ingest the verified output produced by the Multi-Agent pipeline.
-- Apply surgical code modifications or present the refined Vietnamese result directly to MemBau without omitting details.
+- Verify the exported physical files, test console logs, and summary in the output directory.
+- Apply surgical code modifications to the workspace or present the refined Vietnamese result directly to MemBau without omitting details.

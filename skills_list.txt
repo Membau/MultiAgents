@@ -1,8 +1,17 @@
-# Danh sach skill kem mo ta truc tiep:
-# Cu phap: <duong_dan_file.md> "<mo ta ky nang>"
+# Danh sach skills thuc te duoc phat hien trong thu muc skills/
+# Moi skill co the dung SKILL.md hoac file rut gon .mini.md
 
-skills/network.md "kỹ năng về kiến trúc mạng, quét cổng, lập trình socket và bảo mật mạng"
-skills/web_scraping.md "kỹ năng bóc tách dữ liệu web, HTTP request và parse HTML với BeautifulSoup"
-skills/data_analysis.md "kỹ năng xử lý dữ liệu bảng, thống kê tính toán với pandas và numpy"
-skills/database_sql.md "kỹ năng thiết kế cơ sở dữ liệu, tối ưu truy vấn SQL và kết nối CSDL"
-skills/file_processing.md "kỹ năng thao tác đọc ghi file, xử lý JSON/YAML/XML và tìm kiếm regex"
+skills/a-philosophy-of-software-design/SKILL.md "Giam do phuc tap he thong, thiet ke module sau, tach lop abstraction (John Ousterhout)"
+skills/clean-architecture/SKILL.md "Kien truc phan mem Clean Architecture, tach biet business logic va frameworks (Robert C. Martin)"
+skills/clean-code/SKILL.md "Quy tac viet code sach, dat ten ro rang, ham nho gon, don gian hoa luong xu ly (Robert C. Martin)"
+skills/code-complete/SKILL.md "Quy chuan xay dung ma nguon thuc te, kiem thu don vi, phong thu loi va toi uu (Steve McConnell)"
+skills/designing-data-intensive-applications/SKILL.md "Kien truc he thong du lieu quy mo lon, do tin cay, kha nang mo rong va nhat quan (Martin Kleppmann)"
+skills/domain-driven-design/SKILL.md "Thiet ke huong mien DDD co ban, Bounded Context, Ubiquitous Language (Eric Evans)"
+skills/domain-driven-design-distilled/SKILL.md "Ung dung DDD rut gon, Bounded Contexts, Subdomains, Context Maps (Vaughn Vernon)"
+skills/implementing-domain-driven-design/SKILL.md "Hien thuc hoa DDD trong code, Aggregates, Entities, Value Objects, Repositories (Vaughn Vernon)"
+skills/patterns-of-enterprise-application-architecture/SKILL.md "Mau thiet ke ung dung doanh nghiep, kien truc phan tang, Data Mapper, Unit of Work (Martin Fowler)"
+skills/refactoring/SKILL.md "Tai cau truc ma nguon, loai bo code smells ma khong lam thay doi hanh vi he thong (Martin Fowler)"
+skills/refactoring-guru/SKILL.md "Nhan dien code smells va lua chon design patterns toi uu nhat de refactor"
+skills/release-it/SKILL.md "Thiet ke he thong san sang cho moi truong Production, Circuit Breaker, Bulkhead, on dinh cao (Michael T. Nygard)"
+skills/the-pragmatic-programmer/SKILL.md "Tu duy lap trinh vien thuc dung, DRY, orthogonality, tu dong hoa va lua chon cong cu (Hunt & Thomas)"
+skills/working-effectively-with-legacy-code/SKILL.md "Ky thuat xu ly va sua doi he thong ma nguon cu (legacy code), viet test bao boc an toan (Michael Feathers)"
