@@ -1,1 +1,0 @@
-Build a Pomodoro Timer and Task Manager web app single file HTML/Tailwind/JS following Step 1 PM requirements, Step 2 Dev code, Step 3 Tester and Tech Lead review and fix bugs
