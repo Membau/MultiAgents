@@ -139,7 +139,15 @@ def invoke_gemini_with_fallback(
             time.sleep(1.5)
             continue
             
-    raise RuntimeError(f"All Gemini fallback models failed. Last error: {last_err}")
+    print(f"    [Gemini Fallback] All Gemini models failed or rate-limited. Falling back to Local Qwen...")
+    try:
+        res = llm_local.invoke(messages)
+        text = extract_text(res.content).strip()
+        if text:
+            return text
+    except Exception as e_local:
+        print(f"    [Local LLM Warning] Local fallback failed: {e_local}")
+    raise RuntimeError(f"All Gemini fallback models and local fallback failed. Last error: {last_err}")
 
 
 # ==========================================
@@ -148,7 +156,7 @@ def invoke_gemini_with_fallback(
 
 # Model 1: Local Qwen via Ollama (Router, Drafter & Translator)
 llm_local = ChatOllama(
-    model="qwen3:4b",
+    model="qwen3:8b",
     temperature=0.3,
     base_url="http://localhost:11434",
     timeout=60
@@ -156,14 +164,18 @@ llm_local = ChatOllama(
 
 # Gemini API Model Priority Lists (tested and verified on Google AI Studio)
 GEMINI_REVIEWER_MODELS = [
-    os.getenv("GEMINI_MODEL_REVIEWER", "gemini-3.5-flash-lite"),
+    os.getenv("GEMINI_MODEL_REVIEWER", "gemini-4-argon"),
+    "gemini-4-hydrogen",
     "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
     "gemini-flash-latest",
     "gemini-2.5-flash"
 ]
 
 GEMINI_REFINER_MODELS = [
-    os.getenv("GEMINI_MODEL_REFINER", "gemini-3.5-flash"),
+    os.getenv("GEMINI_MODEL_REFINER", "gemini-4-argon"),
+    "gemini-4-hydrogen",
+    "gemini-3.5-flash",
     "gemini-3.5-flash-lite",
     "gemini-pro-latest",
     "gemini-flash-latest"
